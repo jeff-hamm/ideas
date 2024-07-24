@@ -1,33 +1,64 @@
 <html>
 <body style="background-color: black;">
-<form 
-  id="badForm"
-  method="POST" 
-  action="https://script.google.com/macros/s/AKfycbxZW9m8qrg1501jdRvMHZzJCaC6IJuKVtFWpauKgIiM61CXzhw2tAAY4n-F0emBnfNe/exec"
->
-  <textarea name="Idea" id="Idea" placeholder="Bad Idea" rows="4" cols="75"></textarea><br/>
-  <input name="name" id="name" placeholder="Name" /><br/>
-  <button type="submit">Submit</button>
-</form>
-
-<script type="text/javascript">
-document.addEventListener('DOMContentLoaded', function() {
-  document.querySelector('#badForm').addEventListener('submit', function (event) {
-    var data = this;
-	const body = new FormData(data);
-	document.querySelector('#name').value = '';
-	document.querySelector('#Idea').value = '';
-    fetch(data.getAttribute('action'), {
-      method: data.getAttribute('method'),
-      body: body
-    }).then(res=>res.json())
-      .then(function (data) {
-			console.log(data)
-      });
-    event.preventDefault();
-  });
-});
-</script>
+	<style>
+		html, body{
+			height: 100%;
+		}
+		* {
+			font-size: 5vh;
+		}
+		input, textarea {
+		    -webkit-box-sizing: border-box;
+		    -moz-box-sizing: border-box;
+		    box-sizing: border-box;
+		    width: 100%;
+		}
+		.container {
+			 height: 100%;
+			padding: 0;
+			margin: 0;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		.container form {
+			width: 80%;
+		}
+		textarea {
+			height: 50vh;
+		}
+	</style>
+	<div class="container">
+		<form 
+		  id="badForm"
+		  method="POST" 
+		  action="https://script.google.com/macros/s/AKfycbxZW9m8qrg1501jdRvMHZzJCaC6IJuKVtFWpauKgIiM61CXzhw2tAAY4n-F0emBnfNe/exec"
+		>
+		  <textarea name="Idea" id="Idea" placeholder="Bad Idea"></textarea><br/>
+		  <input name="name" id="name" placeholder="Name" /><br/>
+		  <button type="submit">Submit</button>
+		</form>
+		
+		<script type="text/javascript">
+		document.addEventListener('DOMContentLoaded', function() {
+		  document.querySelector('#badForm').addEventListener('submit', function (event) {
+		    var data = this;
+			const body = new FormData(data);
+			document.querySelector('#name').value = '';
+			document.querySelector('#Idea').value = '';
+		    fetch(data.getAttribute('action'), {
+		      method: data.getAttribute('method'),
+		      body: body
+		    }).then(res=>res.json())
+		      .then(function (data) {
+					console.log(data)
+		      });
+		    event.preventDefault();
+		  });
+		});
+		</script>
+		
+	</div>
 </body>
 
 </html>
